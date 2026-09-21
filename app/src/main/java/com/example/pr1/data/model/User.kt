@@ -1,6 +1,6 @@
-package com.example.pr1.dummyjson
+package com.example.pr1.data.model
 
-data class Users(
+data class User(
     val firstName: String,
     val lastName: String,
     val email: String,

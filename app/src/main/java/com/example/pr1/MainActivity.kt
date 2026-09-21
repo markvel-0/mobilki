@@ -1,7 +1,9 @@
 package com.example.pr1
 
-import android.app.Activity
 import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import com.example.pr1.ui.theme.viewmodel.GetUsers
 
 
 //Разработать мобильное приложение для получения и отображения списка пользователей.
@@ -10,10 +12,13 @@ import android.os.Bundle
 // адрес электронной почты (email) и дату рождения (birthDate) пользователя.
 
 
-class MainActivity : Activity() {
+class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        setContent {
+            val getUsers: GetUsers = GetUsers()
+            getUsers.fetch()
+        }
     }
 }
 
