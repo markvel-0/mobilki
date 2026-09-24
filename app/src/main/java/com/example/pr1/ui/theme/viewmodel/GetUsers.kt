@@ -10,7 +10,7 @@ class GetUsers: ViewModel() {
     fun fetch(){
         viewModelScope.launch {
             try {
-                val usersResponse= RetrofitClient.apiService.getUsers()
+                val usersResponse= RetrofitClient.userService.getUsers()
                 val users=usersResponse.users
                 for (user in users) {
                     Log.d("users", "Имя: ${user.firstName} ${user.lastName}\n Почта: ${user.email}\n Дата рождения:${user.birthDate}")

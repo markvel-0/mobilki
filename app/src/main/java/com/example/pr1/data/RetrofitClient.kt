@@ -1,10 +1,12 @@
 package com.example.pr1.data
 
-import com.example.pr1.data.service.ApiService
+import com.example.pr1.data.service.ProductService
+import com.example.pr1.data.service.UserService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.create
 import java.net.InetSocketAddress
 import java.net.Proxy
 
@@ -25,6 +27,6 @@ object RetrofitClient {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    val apiService: ApiService = retrofit.create(ApiService::class.java)
-
+    val userService: UserService = retrofit.create(UserService::class.java)
+    val productService: ProductService = retrofit.create(ProductService::class.java)
 }
