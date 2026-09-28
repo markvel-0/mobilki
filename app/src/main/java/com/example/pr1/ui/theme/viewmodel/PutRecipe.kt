@@ -9,12 +9,10 @@ import kotlinx.coroutines.launch
 
 class PutRecipe: ViewModel() {
 
-//    var recipeBefore: Recipe?=null
-//    var recipeAfter: Recipe?=null
-    fun fetch(id: Int) {
+    fun fetch() {
         viewModelScope.launch {
             try {
-                val recipe = RetrofitClient.recipeService.getRecipes(id)
+                val recipe = RetrofitClient.recipeService.getRecipes(26)
                 Log.d(
                     "Old Recipe", "ID: ${recipe.id}" +
                             " Название: ${recipe.name}" +
@@ -22,26 +20,24 @@ class PutRecipe: ViewModel() {
                             " Сложность: ${recipe.difficulty}" +
                             " Количество калорий: ${recipe.caloriesPerServing}"
                 )
+                val ingredients= listOf("Стейк или филе лосося", "лимонный сок", "горчица дижонская", "оливковое масло", "мед", "чеснок", "соль", "свежемолотый черный перец")
+                val newRecipe = recipe.copy(
+                    name = "Запеченный лосось в лимонно-горчичном маринаде",
+                    ingredients=ingredients,
+                    difficulty = "Легкая",
+                    caloriesPerServing = 420
+                )
+                if(newRecipe.id !=null){
+                    val newRecipe = RetrofitClient.recipeService.putRecipes(newRecipe.id,newRecipe)
+                    Log.d("New Recipe","ID: ${newRecipe.id}" +
+                            " Название: ${newRecipe.name}" +
+                            " Ингредиенты: ${newRecipe.ingredients}" +
+                            " Сложность: ${newRecipe.difficulty}" +
+                            " Количество калорий: ${newRecipe.caloriesPerServing}")
+                }
             } catch (e: Exception) {
                 Log.e("Error: ", "${e.message}")
 
-            }
-        }
-    }
-    fun putRecipe(id:Int, recipe: Recipe){
-        viewModelScope.launch {
-            try{
-                val recipe= RetrofitClient.recipeService.putRecipes(id,recipe)
-                if(recipe.id !=null){
-                    Log.d("New Recipe","ID: ${recipe.id}" +
-                            " Название: ${recipe.name}" +
-                            " Ингредиенты: ${recipe.ingredients}" +
-                            " Сложность: ${recipe.difficulty}" +
-                            " Количество калорий: ${recipe.caloriesPerServing}")
-                    }
-                }
-            catch (e: Exception) {
-                Log.e("Error: ", "${e.message}")
             }
         }
     }

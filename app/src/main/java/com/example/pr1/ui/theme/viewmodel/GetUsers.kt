@@ -17,11 +17,19 @@ class GetUsers: ViewModel() {
                 }
             }
             catch (e: Exception){
-                Log.e("usererror", "${e.message}")
-
+                Log.e("Error", "${e.message}")
+            }
         }
     }
-
-}
-
+    fun deleteUser(id: Int){
+        viewModelScope.launch {
+        try{
+            val user = RetrofitClient.userService.deletedUser(id)
+            Log.d("Deleting user:", "ID: ${user.id} \n Deleted? ${user.isDeleted}")
+        }
+        catch (e: Exception){
+            Log.e("Error", "${e.message}")
+        }
+    }
+        }
 }
