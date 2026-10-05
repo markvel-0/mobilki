@@ -14,11 +14,6 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            //PR16
-            val putRecipe: PutRecipe= PutRecipe()
-            putRecipe.fetch()
-
-            //PR17
             val getUsers: GetUsers = GetUsers()
             getUsers.deleteUser(26)
         }
@@ -42,6 +37,6 @@ class MainActivity : ComponentActivity() {
 //endregion
 
 //region PR16
-
-
+//val putRecipe: PutRecipe= PutRecipe()
+//putRecipe.fetch()
 //endregion
