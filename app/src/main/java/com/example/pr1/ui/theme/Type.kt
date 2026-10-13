@@ -50,7 +50,7 @@ data class AppTypography(
 )
 
 val LocalAppTypography = staticCompositionLocalOf {
-    AppTypography(
-
-    )
+//    AppTypography(
+//
+//    )
 }
