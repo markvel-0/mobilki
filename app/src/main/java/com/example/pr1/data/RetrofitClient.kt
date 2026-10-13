@@ -28,6 +28,11 @@ object RetrofitClient {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
+    val retrofitSwagger = Retrofit.Builder()
+        .baseUrl("http://10.207.106.59:8090/api/collections/")
+        .client(okHttpClient)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
     val userService: UserService = retrofit.create(UserService::class.java)
     val productService: ProductService = retrofit.create(ProductService::class.java)
 
