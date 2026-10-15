@@ -58,6 +58,5 @@ dependencies {
 
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1")
 
-    implementation("androidx.datastore:datastore-preferences:1.2.1")
-    implementation("androidx.datastore:datastore:1.2.1")
+    implementation(libs.androidx.datastore.preferences)
 }
